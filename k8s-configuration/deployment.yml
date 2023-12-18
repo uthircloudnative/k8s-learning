@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-learning-deployment
+  labels:
+    app: k8s-learning-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-learning
+  template:
+    metadata:
+      labels:
+        app: k8s-learning
+    spec:
+      containers:
+        - name: k8s-learning
+          #Registry URL with Repository name and image info
+          image: <DockerHubUserName>/k8s-learning:latest
+          ports:
+            - containerPort: 8080
